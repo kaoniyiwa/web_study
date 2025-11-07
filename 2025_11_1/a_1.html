@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>blog.kaoniyiwa.cn</title>
+</head>
+<body>
+    <h1>欢迎你来到首页</h1>
+<a href="./a_1.html">首页</a>
+<a href="./a_2.html">列表页</a>
+<a href="./a_3.html">详情页</a>
+<a href="./a_4.html">登录页</a></br>
+<img src="./images/index.png">
+
+<script>
+/** 1) 规范化：去空格、去标点、同形/谐音/Leet 还原、统一小写 */
+function normalizeForCheck(s) {
+  const map = {
+    '０':'0','１':'1','２':'2','３':'3','４':'4','５':'5','６':'6','７':'7','８':'8','９':'9',
+    'Ａ':'a','Ｂ':'b','Ｃ':'c','Ｄ':'d','Ｅ':'e','Ｆ':'f','Ｇ':'g','Ｈ':'h','Ｉ':'i','Ｊ':'j','Ｋ':'k','Ｌ':'l','Ｍ':'m','Ｎ':'n','Ｏ':'o','Ｐ':'p','Ｑ':'q','Ｒ':'r','Ｓ':'s','Ｔ':'t','Ｕ':'u','Ｖ':'v','Ｗ':'w','Ｘ':'x','Ｙ':'y','Ｚ':'z',
+    'a':'a','A':'a','Ｂ':'b',
+    // 常见 Leet & 同形替换（可继续补充）
+    '1':'l','!':'i','|':'i','5':'s','$':'s','0':'o','@':'a','3':'e','7':'t'
+  };
+  s = s.replace(/./g, ch => map[ch] ?? ch);
+  s = s.toLowerCase();
+  // 去掉空格/点/短横/下划线等常用于混淆的分隔符
+  s = s.replace(/[\s._\-|\\/]+/g, '');
+  // 去掉常见无意义的拉长字符
+  s = s.replace(/[~^*]+/g, '');
+  return s;
+}
+
+/** 2) 规则库（举例：不含具体脏词，仅给出可维护的占位） */
+const BAD_WORD_PATTERNS = [
+  // 明示推广 / 广告
+  /\b(?:免费|低价|代刷|引流|推广|兼职|返利|回收|发卡)\b/,
+  // 链接 / 群拉人（带混淆）
+  /(https?:\/\/|www\.)\S+/,
+  /\b(?:qq|qq群|q群|qq群聊|加q|v信|vx|wei?chat|tg|tme|电报|telegram)\b/,
+  // 联系方式（手机号/微信号/邮箱 — 做适度放宽）
+  /\b1\d{10}\b/,                      // 中国大陆手机号
+  /\b[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}\b/,
+  /\b[0-9a-z]{6,20}\b(?=.*(?:vx|wx|wechat|qq))/,
+  // 重复刷屏（同字母/emoji 大量重复）
+  /(.)\1{8,}/,
+  // 过长或几乎全是符号
+  /^[^\p{L}\p{N}]{8,}$/u,
+];
+
+// 你可以在单独文件维护敏感词（不建议在仓库里写具体词），这里只放占位示例：
+// const BAD_KEYWORDS = ['[脏词占位1]', '[脏词占位2]']; // 维护成你自己的私有清单
+const BAD_KEYWORDS = []; // 保持为空即可，后续自己维护私有文件加载
+
+/** 3) 判定函数：命中则返回原因 */
+function checkBadText(raw) {
+  const text = String(raw).trim();
+  if (!text) return { ok:false, reason: '内容为空' };
+
+  // 基本长度约束
+  if (text.length > 15) return { ok:false, reason: '内容过长（最多 15 字）' };
+
+  // 规范化后检查
+  const norm = normalizeForCheck(text);
+
+  // 关键词（私有库）
+  for (const kw of BAD_KEYWORDS) {
+    if (!kw) continue;
+    const k = normalizeForCheck(kw);
+    if (k && norm.includes(k)) return { ok:false, reason: '包含禁止词' };
+  }
+
+  // 正则规则
+  for (const re of BAD_WORD_PATTERNS) {
+    if (re.test(norm)) return { ok:false, reason: '包含不合规信息' };
+  }
+
+  // 过度表情 & 垃圾格式（可选）
+  const emojiCount = (text.match(/\p{Extended_Pictographic}/gu) || []).length;
+  if (emojiCount > 50) return { ok:false, reason: '表情过多' };
+
+  return { ok:true };
+}
+
+/** 4) 在提交前调用 */
+async function submitNote(text) {
+  const r = checkBadText(text);
+  if (!r.ok) {
+    alert('无法提交：' + r.reason);
+    return;
+  }
+  // 通过再提交到后端
+  await fetch('/api/messages', {
+    method: 'POST',
+    headers: { 'Content-Type':'application/json' },
+    body: JSON.stringify({ text })
+  }).then(res => {
+    if (!res.ok) throw new Error('提交失败');
+    return res.json();
+  }).then(() => {
+    // 成功后的 UI 逻辑
+  }).catch(err => alert('提交失败：' + err.message));
+}
+
+// 假设你的输入框 id = noteInput，按钮 id = sendBtn
+document.getElementById('addMessageBtn').addEventListener('click', () => {
+  const v = document.getElementById('messageInput').value;
+  submitNote(v);
+});
+</script>
+
+</body>
+</html>
