@@ -103,10 +103,6 @@ button.primary,.btn.primary{
 .center{text-align:center}
 
 
-.trend-up{font-weight:700}
-.trend-up::after{content:"▲"; margin-left:6px; color:#e53935;}
-.trend-down{font-weight:700}
-.trend-down::after{content:"▼"; margin-left:6px; color:#43a047;}
 
 
 .captcha{
