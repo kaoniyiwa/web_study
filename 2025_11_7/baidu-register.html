@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Baidu 注册表单</title>
+<link rel="stylesheet" href="common.css" />
+</head>
+<body>
+<div class="container">
+  <div class="logo-baidu">
+    <img src="./images/logo_baidu.jpg">
+  </div>
+  <h2>请填写您的信息：</h2>
+
+  <form class="form" action="#">
+    <div class="row">
+      <label for="name">姓名：</label>
+      <input id="name" type="text" placeholder="请输入您的姓名" />
+    </div>
+
+    <div class="row">
+      <label for="pwd">密码：</label>
+      <input id="pwd" type="password" placeholder="请输入密码" />
+    </div>
+
+    <div class="row">
+      <label for="pwd2">确认密码：</label>
+      <input id="pwd2" type="password" placeholder="请确认密码" />
+    </div>
+
+    <div class="row">
+      <label for="code">验证码：</label>
+      <div class="captcha">
+        <input id="code" type="text" placeholder="请输入验证码" style="width:160px" />
+        <div class="img">0745</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <label></label>
+      <label><input type="checkbox"> 我已阅读并接受《<a href="#">百度用户协议</a>》</label>
+    </div>
+
+    <div class="row btns">
+      <button type="reset">重置</button>
+      <button type="submit" class="primary">提交</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
