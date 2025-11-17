@@ -1,0 +1,329 @@
+/* 通用重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* 通用容器 */
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+/* 顶部标题/导航 */
+.page-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #777;
+}
+
+/* 文章内容 */
+.article {
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.article p {
+    margin-bottom: 12px;
+}
+
+.article h2 {
+    font-size: 18px;
+    margin: 20px 0 10px;
+}
+
+/* 图片通用样式 */
+.img-center {
+    text-align: center;
+    margin: 16px 0;
+}
+
+.img-center img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 页脚简单导航 */
+.footer-nav {
+    margin-top: 24px;
+    font-size: 13px;
+    text-align: center;
+    color: #666;
+}
+
+.footer-nav a {
+    margin: 0 6px;
+    text-decoration: none;
+    color: #1a73e8;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===== 仿百度首页样式 ===== */
+
+.baidu-body {
+    background-color: #ffffff;
+    font-family: "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #000;
+}
+
+.baidu-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 120px;        /* 顶部留白，接近截图 */
+}
+
+.baidu-logo-area {
+    margin-bottom: 30px;
+}
+
+.baidu-logo-area img {
+    width: 270px;
+    height: auto;
+}
+
+/* 顶部导航：新闻 网页 贴吧 知道 ... */
+.baidu-top-nav {
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.baidu-top-nav a {
+    margin: 0 6px;
+    color: #0000cc;
+    text-decoration: none;
+}
+
+.baidu-top-nav a:hover {
+    text-decoration: underline;
+}
+
+/* 搜索框区域 */
+.baidu-search-area {
+    margin-bottom: 28px;
+}
+
+.baidu-search-box {
+    display: inline-flex;
+    width: 540px;
+    border: 1px solid #b6b6b6;
+    border-right: none;
+}
+
+.baidu-search-input {
+    flex: 1;
+    border: none;
+    padding: 7px 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.baidu-search-btn {
+    width: 100px;
+    border: 1px solid #b6b6b6;
+    background-color: #e8e8e8;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.baidu-search-btn:hover {
+    background-color: #dedede;
+}
+
+/* 中部文字链接 */
+.baidu-mid-links {
+    font-size: 13px;
+    margin-top: 22px;
+    line-height: 1.8;
+}
+
+.baidu-mid-links a {
+    color: #0000cc;
+    text-decoration: none;
+}
+
+.baidu-mid-links a:hover {
+    text-decoration: underline;
+}
+
+/* 底部版权区域 */
+.baidu-footer {
+    margin-top: 60px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.baidu-footer a {
+    color: #0000cc;
+    text-decoration: none;
+}
+
+.baidu-footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* =========== 商品页样式 =========== */
+
+.product-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.product-img {
+    flex: 1 1 280px;
+    text-align: center;
+}
+
+.product-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-info {
+    flex: 1 1 280px;
+}
+
+.product-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #ff6a00;
+    margin-bottom: 12px;
+}
+
+.product-desc {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 18px;
+}
+
+.product-spec {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.product-btns {
+    margin-top: 12px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 8px;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: #ff6a00;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #e45f00;
+}
+
+.btn-outline {
+    border-color: #ff6a00;
+    color: #ff6a00;
+    background-color: #fff;
+}
+
+.btn-outline:hover {
+    background-color: #fff4ec;
+}
+/* ===== Nature 文章页专用样式 ===== */
+
+.nature-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+.nature-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.nature-meta {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 26px;
+}
+
+.nature-meta a {
+    color: #1e5fd8;
+    text-decoration: none;
+}
+
+.nature-meta a:hover {
+    text-decoration: underline;
+}
+
+.nature-separator {
+    width: 520px;
+    max-width: 80%;
+    margin: 0 auto 22px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.nature-content-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 2;
+    color: #333;
+}
+
+.nature-content-wrap p {
+    margin-bottom: 10px;
+    text-indent: 2em;
+}
+.test{
+    color: seagreen;
+}
+.test2{
+    color: paleturquoise;
+}
