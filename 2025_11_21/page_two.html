@@ -1,0 +1,62 @@
+<style>
+.color-nav {
+    width:120px;height:50px;
+    color:#fff;text-align:center;line-height:50px;
+    font-size:20px;border-radius:6px;
+    float:left;margin:20px 20px 0 20px;
+    position:relative;
+}
+
+/* 所有伪元素统一结构 */
+.color-nav:after {
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-12px; /* 让箭头到按钮外面 */
+    transform:translateX(-50%);
+    width:0;height:0;
+    border-left:12px solid transparent;
+    border-right:12px solid transparent;
+}
+
+/* 红色按钮 */
+.nav-red {
+    background-image:url(./images/bg1.png);
+}
+.nav-red:after {
+    border-top:12px solid #c21b3c;
+}
+
+/* 绿色按钮 */
+.nav-green {
+    background-image:url(./images/bg2.png);
+}
+.nav-green:after {
+    border-top:12px solid #33a01c;
+}
+
+/* 橙色按钮 */
+.nav-orange {
+    background-image:url(./images/bg3.png);
+}
+.nav-orange:after {
+    border-top:12px solid #ff9900;
+}
+
+/* 紫色按钮 */
+.nav-purple {
+    background-image:url(./images/bg4.png);
+}
+.nav-purple:after {
+    border-top:12px solid #a21bc0;
+}
+</style>
+
+
+<div class="color-nav nav-red">五彩导航</div>
+<div class="color-nav nav-green">五彩导航</div>
+<div class="color-nav nav-orange">五彩导航</div>
+<div class="color-nav nav-purple">五彩导航</div>
+
+
+
