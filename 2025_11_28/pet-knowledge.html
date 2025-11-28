@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱宠知识 - 还原</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .pet-container {
+            width: 360px;
+            background-color: #8bc848;
+            background-image:url(./images/bg.gif);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            
+            border: 1px solid #7cb13d;
+            padding: 15px;
+            padding-bottom: 25px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        .header .yellow-bar {
+            width: 4px;
+            height: 22px;
+            background-color: #fff200;
+            margin-right: 8px;
+        }
+
+        .header h2 {
+            font-size: 22px;
+            color: #ffffff;
+            font-weight: bold;
+
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2); 
+            letter-spacing: 1px;
+        }
+
+
+        .content-box {
+            background-color: #ffffff;
+            padding: 10px 15px;
+        }
+
+        .news-list {
+            list-style: none;
+        }
+
+        .news-list li {
+            border-bottom: 1px dashed #999;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+
+        .news-list li::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            flex-shrink: 0;
+
+            background-image: url("./images/tb.gif");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .news-list li a {
+            text-decoration: none;
+            color: #5e2e86;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .news-list li a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="pet-container">
+        <div class="header">
+            <span class="yellow-bar"></span>
+            <h2>爱宠知识</h2>
+        </div>
+        <div class="content-box">
+            <ul class="news-list">
+                <li><a href="#">养狗比养猫对健康更有利</a></li>
+                <li><a href="#">日本正宗柴犬亮相，你怎么看柴犬</a></li>
+                <li><a href="#">狗狗歌曲《新年旺旺》</a></li>
+                <li><a href="#">带宠兜风，开车带宠需要注意什么？</a></li>
+                <li><a href="#">【爆笑】这狗狗太不给力了</a></li>
+                <li><a href="#">狗狗与男童相同着装拍有爱造型照</a></li>
+                <li><a href="#">狗狗各个阶段健康大事件</a></li>
+                <li><a href="#">调皮宠物狗陷在沙发里的搞笑瞬间</a></li>
+                <li><a href="#">为什么每次大小便后，会用脚踢土？</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
