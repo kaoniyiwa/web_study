@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米账号登录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+        }
+        
+        .login-title {
+            color: #ff6700;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .input-field {
+            padding: 14px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .input-field:focus {
+            border-color: #ff6700;
+            outline: none;
+        }
+        
+        .login-btn {
+            background-color: #ff6700;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .login-btn:hover {
+            background-color: #e55d00;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .mi{
+            margin-right:150px;
+            margin-left: 130px;
+            background-color: #ff6700;
+            text-align: center;
+        }
+        .k{
+            margin-bottom: 30px;
+            max-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="mi"><img src="./images/mi-logo.png"></div>
+        <div class="k"></div>
+        <h1 class="login-title">小米账号登录</h1>
+        <form class="login-form">
+            <input type="text" class="input-field" placeholder="邮箱/手机/小米ID">
+            <input type="text" class="input-field" placeholder="邮箱/手机/小米ID">
+            <button type="submit" class="login-btn">登录</button>
+        </form>
+        <div class="copyright">© 小米公司</div>
+    </div>
+</body>
+</html>
