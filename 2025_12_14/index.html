@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学成在线 - 首页还原</title>
+    <style>
+        /* --- 全局重置与基础样式 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto; /* 居中容器 */
+        }
+
+        /* --- 顶部导航栏 (Header) --- */
+        header {
+            background-color: #fff;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00a4ff;
+            margin-right: 50px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px; /* 模拟Logo高度 */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #00a4ff;
+        }
+
+        .search-area {
+            display: flex;
+            margin-left: auto;
+            margin-right: 30px;
+        }
+
+        .search-area input {
+            border: 1px solid #00a4ff;
+            padding: 8px 10px;
+            width: 300px;
+            outline: none;
+        }
+
+        .search-area button {
+            background-color: #00a4ff;
+            border: none;
+            color: white;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+        }
+        
+        .user-profile img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        /* --- Banner 区域 --- */
+        .banner {
+            background-color: #1c0f68; /* 深蓝色背景 */
+            height: 420px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-content {
+            display: flex;
+            height: 100%;
+        }
+
+        /* 左侧侧边栏 */
+        .sidebar {
+            width: 190px;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sidebar li {
+            padding: 12px 20px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sidebar li:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #00a4ff;
+        }
+
+        /* 中间内容 (模拟) */
+        .hero-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-image: radial-gradient(circle at 20% 50%, #ff0055 0%, transparent 20%),
+                              radial-gradient(circle at 80% 30%, #ffaa00 0%, transparent 20%),
+                              radial-gradient(circle at 50% 80%, #00a4ff 0%, transparent 30%);
+            /* 这里的背景只是模拟图中的多彩气泡 */
+        }
+
+        .hero-main h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-main .btn-start {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 4px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* 右侧课程表 */
+        .my-courses {
+            width: 230px;
+            background-color: #fff;
+            margin-top: 50px; 
+            margin-bottom: 50px; /* 上下留空 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-header {
+            background-color: #9bceea;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .course-list {
+            padding: 15px;
+            flex: 1;
+        }
+
+        .course-list li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .course-list h5 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .course-list p {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .view-all-btn {
+            display: block;
+            border: 1px solid #00a4ff;
+            color: #00a4ff;
+            text-align: center;
+            margin: 10px;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        /* --- 筛选条 --- */
+        .filter-bar {
+            background: #fff;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 2px rgba(0,0,0,0.05);
+        }
+
+        .filter-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tags a {
+            margin: 0 15px;
+            color: #666;
+        }
+
+        .tags a.active {
+            color: #00a4ff;
+            font-weight: bold;
+        }
+        
+        .tags span {
+            color: #ddd;
+            margin: 0 5px;
+        }
+
+        .edit-interest {
+            color: #00a4ff;
+            font-size: 12px;
+        }
+
+        /* --- 精品推荐 (Grid) --- */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+
+        .section-header h2 {
+            font-weight: normal;
+            color: #333;
+        }
+
+        .section-header .see-all {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5列 */
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .course-card {
+            background: #fff;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-body h4 {
+            font-size: 14px;
+            font-weight: normal;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            height: 40px; /* 固定高度防止错位 */
+            overflow: hidden;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .level {
+            color: #ff6600;
+        }
+
+        /* --- 页脚 (Footer) --- */
+        footer {
+            background-color: #fff;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-left h1 {
+            color: #00a4ff;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .download-btn {
+            border: 1px solid #00a4ff;
+            color: #00a4ff;
+            padding: 5px 20px;
+            display: inline-block;
+        }
+
+        .footer-links dl {
+            float: left;
+            margin-left: 80px;
+        }
+        
+        .footer-links dt {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer-links dd {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <img src="./images/logo.png" alt="学成在线">
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">课程</a>
+                <a href="#">职业规划</a>
+            </nav>
+
+            <div class="search-area">
+                <input type="text" placeholder="输入关键词">
+                <button>🔍</button>
+            </div>
+
+            <div class="user-profile">
+                <img src="./images/user.png" alt="Avatar">
+                <span>lilei</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="container banner-content">
+            <ul class="sidebar">
+                <li>前端开发 <span>&gt;</span></li>
+                <li>前端开发 <span>&gt;</span></li>
+                <li>前端开发 <span>&gt;</span></li>
+                <li>前端开发 <span>&gt;</span></li>
+                <li>前端开发 <span>&gt;</span></li>
+                <li>前端开发 <span>&gt;</span></li>
+                <li>前端开发 <span>&gt;</span></li>
+                <li>前端开发 <span>&gt;</span></li>
+                <li>前端开发 <span>&gt;</span></li>
+            </ul>
+
+            <div class="hero-main">
+                <h1>PHP基础视频</h1>
+                <p>环境搭建 函数 文件 正则</p>
+                <div class="btn-start">立即学习</div>
+            </div>
+
+            <div class="my-courses">
+                <div class="course-header">我的课程表</div>
+                <ul class="course-list">
+                    <li>
+                        <h5>继续学习 程序语言设计</h5>
+                        <p>正在学习-使用对象</p>
+                    </li>
+                    <li>
+                        <h5>继续学习 程序语言设计</h5>
+                        <p>正在学习-使用对象</p>
+                    </li>
+                    <li>
+                        <h5>继续学习 程序语言设计</h5>
+                        <p>正在学习-使用对象</p>
+                    </li>
+                </ul>
+                <a href="#" class="view-all-btn">全部课程</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <div class="container filter-content">
+            <div class="tags">
+                <a href="#" class="active">精品推荐</a> <span>|</span>
+                <a href="#">jQuery</a> <span>|</span>
+                <a href="#">jQuery</a> <span>|</span>
+                <a href="#">jQuery</a> <span>|</span>
+                <a href="#">jQuery</a> <span>|</span>
+                <a href="#">jQuery</a> <span>|</span>
+                <a href="#">jQuery</a>
+            </div>
+            <a href="#" class="edit-interest">修改兴趣</a>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="section-header">
+            <h2>精品推荐</h2>
+            <a href="#" class="see-all">查看全部</a>
+        </div>
+
+        <div class="course-grid">
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card">
+                <img src="./images/course07.png" alt="Course">
+                <div class="card-body">
+                    <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+                    <div class="card-meta">
+                        <span class="level">高级</span>
+                        <span>• 1125人在学习</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <a href="#" class="logo">
+                    <img src="./images/logo.png" alt="学成在线">
+                </a>
+                <p class="footer-text">
+                    学成在线致力于普及中国最好的教育与中国一流大学和机构合作提供在线课程。<br>
+                    © 2017年XTCG Inc.保留所有权利。-沪ICP备15025210号
+                </p>
+                <a href="#" class="download-btn">下载APP</a>
+            </div>
+            <div class="footer-links">
+                <dl>
+                    <dt>合作伙伴</dt>
+                    <dd>合作机构</dd>
+                    <dd>合作导师</dd>
+                </dl>
+                <dl>
+                    <dt>合作伙伴</dt>
+                    <dd>合作机构</dd>
+                    <dd>合作导师</dd>
+                </dl>
+                <dl>
+                    <dt>合作伙伴</dt>
+                    <dd>合作机构</dd>
+                    <dd>合作导师</dd>
+                </dl>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
